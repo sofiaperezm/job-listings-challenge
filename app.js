@@ -9,67 +9,19 @@ jobsData.forEach(element => {
 
 function createCard(job) {
     const cardElement = document.createElement("article");
-    cardElement.classList.add("card")
+    cardElement.classList.add("card");
+    
+    const companyLogoSection = createCompanyLogoSection(job.logo, job.company);
 
-    const companyLogo = createCardElement({
-        elementType: "img",
-        container: cardElement,
-        attributes: { class: "company__logo", src: job.logo, 
-        alt: `company logo from ${job.company}`},
-        properties: { innerText: job.company }
-    });
-
-    const companyName = createCardElement({
-        elementType: "p",
-        container: cardElement,
-        attributes: { class: "company__name"},
-        properties: { innerText: job.company }
-    });
-
-    const badges = createBadge(job.new, job.featured);
-    badges.forEach(badge => {
-        cardElement.appendChild(badge)
-    })
-
-    const jobPosition = createCardElement({
-        elementType: "p",
-        container: cardElement,
-        attributes: { class: "job__position"},
-        properties: { innerText: job.position }
-    });
-
-    const postedAt = createCardElement({
-        elementType: "p",
-        container: cardElement,
-        attributes: { class: "post__details"},
-        properties: { innerText: job.postedAt }
-    });
-
-    const firstDot = createCardElement({
-        elementType: "p",
-        container: cardElement,
-        properties: { innerText: "•" }
-    });
-
-    const contract = createCardElement({
-        elementType: "p",
-        container: cardElement,
-        attributes: { class: "post__details"},
-        properties: { innerText: job.contract }
-    });
-
-    const secondDot = createCardElement({
-        elementType: "p",
-        container: cardElement,
-        properties: { innerText: "•" }
-    });
-
-    const jobLocation = createCardElement({
-        elementType: "p",
-        container: cardElement,
-        attributes: { class: "post__details"},
-        properties: { innerText: job.location }
-    });
+    const jobDetailsSection = createJobDetailsSection({ 
+        companyName: job.company, 
+        newBadge: job.new, 
+        featuredBadge: job.featured, 
+        position: job.position,
+        postedAt: job.postedAt,
+        contract: job.contract,
+        location: job.location
+     });
 
     const labels = createLabel({
         role: job.role,
@@ -78,11 +30,12 @@ function createCard(job) {
         tools: job.tools,   
     });
 
+    cardElement.appendChild(companyLogoSection);
+    cardElement.appendChild(jobDetailsSection);
     cardElement.appendChild(labels);
 
     return cardElement;
 }
-
 
 function createBadge(isNew, isFeatured) {
     if (!isNew && !isFeatured) {
@@ -108,7 +61,6 @@ function createBadge(isNew, isFeatured) {
 
     return badges
 }
-
 
 function createCardElement({ elementType, container, properties, attributes }) {
     const newElement = document.createElement(elementType);
@@ -143,4 +95,95 @@ function createLabel({ role, level, languages, tools }) {
     }
 
     return labelsContainer;
+}
+
+function createCompanyLogoSection(logo, companyName) {
+    const companyLogoContainer = document.createElement("div");
+    companyLogoContainer.classList.add("logo__container")
+
+    createCardElement({
+        elementType: "img",
+        container: companyLogoContainer,
+        attributes: { class: "company__logo", src: logo, 
+        alt: `company logo from ${companyName}`},
+        properties: { innerText: companyName }
+    });
+
+    return companyLogoContainer;
+}
+
+function createJobDetailsSection({ 
+    companyName, 
+    newBadge, 
+    featuredBadge, 
+    position, 
+    postedAt, 
+    contract, 
+    location 
+    }) {
+    const jobDetailsContainer = document.createElement("div");
+    jobDetailsContainer.classList.add("details__container") 
+
+    createCardElement({
+        elementType: "p",
+        container: jobDetailsContainer,
+        attributes: { class: "company__name"},
+        properties: { innerText: companyName }
+    });
+
+    const badges = createBadge(newBadge, featuredBadge);
+    badges.forEach(badge => {
+        jobDetailsContainer.appendChild(badge)
+    });
+
+    createCardElement({
+        elementType: "p",
+        container: jobDetailsContainer,
+        attributes: { class: "job__position"},
+        properties: { innerText: position }
+    });
+
+    createCardElement({
+        elementType: "p",
+        container: jobDetailsContainer,
+        attributes: { class: "post__details"},
+        properties: { innerText: postedAt }
+    });
+
+    createCardElement({
+        elementType: "p",
+        container: jobDetailsContainer,
+        properties: { innerText: "•" }
+    });
+
+    createCardElement({
+        elementType: "p",
+        container: jobDetailsContainer,
+        attributes: { class: "post__details"},
+        properties: { innerText: contract }
+    });
+
+    createCardElement({
+        elementType: "p",
+        container: jobDetailsContainer,
+        properties: { innerText: "•" }
+    });
+
+    createCardElement({
+        elementType: "p",
+        container: jobDetailsContainer,
+        attributes: { class: "post__details"},
+        properties: { innerText: location }
+    });
+
+
+
+
+    // const secondDot = createCardElement({
+    //     elementType: "p",
+    //     container: cardElement,
+    //     properties: { innerText: "•" }
+    // });
+
+    return jobDetailsContainer;
 }

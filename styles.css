@@ -1,4 +1,51 @@
-body {
-    background-color:#f0fafb;
+:root {
+    /* --padding-horizontal-mobile: 1.25rem;
+    --padding-horizontal-tablet: 3rem;
+    --padding-horizontal-desktop: 5rem; */
+    --light-grayish-bg: hsl(185, 58%, 96%);
+    --light-grayish-filter: hsl(180, 31%, 95%);
+    --dark-grayish-cyan: hsl(180, 8%, 52%);
+    --very-dark-grayish: hsl(180, 14%, 20%);
+    --white: hsl(0, 0%, 100%);
+    --gray: hsl(176, 15%, 20%);
+    --gray-shadow: rgba(0, 0, 0, 0.15);
 }
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--light-grayish-bg);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.87rem;
+    margin: 0.75rem;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    background-color: var(--white);
+    margin: 0.3rem;
+}
+
+.company__logo {
+    margin-top: -1.87rem;
+}
+
+.labels__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.label {
+    border: none;
+}
