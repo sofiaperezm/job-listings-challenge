@@ -2,6 +2,7 @@
     /* --padding-horizontal-mobile: 1.25rem;
     --padding-horizontal-tablet: 3rem;
     --padding-horizontal-desktop: 5rem; */
+    --green-primary: hsl(181, 29%, 51%);
     --light-grayish-bg: hsl(185, 58%, 96%);
     --light-grayish-filter: hsl(180, 31%, 95%);
     --dark-grayish-cyan: hsl(180, 8%, 52%);
@@ -17,6 +18,12 @@
 
 body {
     background-color: var(--light-grayish-bg);
+    font-family: "Spartan"
+}
+
+h1 {
+    color: var(--very-dark-grayish);
+    margin: 2.8rem;
 }
 
 .container {
@@ -28,24 +35,82 @@ body {
 
 .card {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
-    border-radius: 5px;
+    border-radius: 0.3rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
     background-color: var(--white);
     margin: 0.3rem;
 }
 
+.logo__container {
+    margin-bottom: 1.25rem;
+}
+
 .company__logo {
     margin-top: -1.87rem;
+    max-width: 25%;
+    padding-left: 1.25rem;
+}
+
+.details__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* justify-content: center; */
+    /* justify-content: space-around;     */
+    margin: 1rem;
+    border-bottom: solid 0.1rem var(--very-dark-grayish);
+}
+
+.company__name {
+    font-weight: 700;
+    color: var(--green-primary);
+    text-align: start;
+    /* flex-basis: 100%; */
+}
+
+.badge {
+    background-color: var(--very-dark-grayish);
+    border-radius: 3rem;
+    color: var(--white);
+    padding: 0.6rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-left: 1rem
+}
+
+.badge--new {
+    background-color: var(--green-primary);
+}
+
+.job__position {
+    font-weight: 700;
+    color: var(--very-dark-grayish);
+    flex-basis: 100%;
+}
+
+.job__details {
+    align-self: center;
+    font-weight: 300;
 }
 
 .labels__container {
     display: flex;
     flex-wrap: wrap;
     gap: 0.3rem;
+    justify-content: flex-start;
+    align-content: space-around;
+    gap: 0.8rem;
+    margin: 1rem;
 }
 
 .label {
     border: none;
+    background-color: var(--light-grayish-bg);
+    color: var(--green-primary);
+    border-radius: 0.3rem;
+    font-family: "Spartan";
+    font-weight: 500;
+    padding: 0.7rem;
 }
