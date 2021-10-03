@@ -44,15 +44,15 @@ function createBadge(isNew, isFeatured) {
     
     const badges = [];
     if (isNew) {
-        const newBadge = document.createElement("p");
-        newBadge.innerText = "New!"
+        const newBadge = document.createElement("span");
+        newBadge.innerText = "New"
         newBadge.classList.add("badge");
         newBadge.classList.add("badge--new");
         badges.push(newBadge);
     }
 
     if (isFeatured) {
-        const featuredBadge = document.createElement("p");
+        const featuredBadge = document.createElement("span");
         featuredBadge.innerText = "Featured";
         featuredBadge.classList.add("badge");
         featuredBadge.classList.add("badge--featured")
@@ -153,6 +153,7 @@ function createJobDetailsSection({
     createCardElement({
         elementType: "p",
         container: jobDetailsContainer,
+        attributes: { class: "post__details"},
         properties: { innerText: "•" }
     });
 
@@ -166,7 +167,8 @@ function createJobDetailsSection({
     createCardElement({
         elementType: "p",
         container: jobDetailsContainer,
-        properties: { innerText: "•" }
+        properties: { innerText: "•" },
+        attributes: { class: "post__details"},
     });
 
     createCardElement({
@@ -175,15 +177,6 @@ function createJobDetailsSection({
         attributes: { class: "post__details"},
         properties: { innerText: location }
     });
-
-
-
-
-    // const secondDot = createCardElement({
-    //     elementType: "p",
-    //     container: cardElement,
-    //     properties: { innerText: "•" }
-    // });
 
     return jobDetailsContainer;
 }
