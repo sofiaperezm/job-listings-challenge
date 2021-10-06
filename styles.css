@@ -1,15 +1,9 @@
 :root {
-    /* --padding-horizontal-mobile: 1.25rem;
-    --padding-horizontal-tablet: 3rem;
-    --padding-horizontal-desktop: 5rem; */
     --green-primary: hsl(181, 29%, 51%);
     --light-grayish-bg: hsl(185, 58%, 96%);
-    --light-grayish-filter: hsl(180, 31%, 95%);
     --dark-grayish-cyan: hsl(180, 8%, 52%);
     --very-dark-grayish: hsl(180, 14%, 20%);
     --white: hsl(0, 0%, 100%);
-    --gray: hsl(176, 15%, 20%);
-    --gray-shadow: rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -30,17 +24,21 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 1.87rem;
-    margin: 0.75rem;
+    margin: .75rem;
 }
 
 .card {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    border-radius: 0.3rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    border-radius: .3rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 20px 25px -5px, rgba(0, 0, 0, 0.04) 0 10px 10px -5px;
     background-color: var(--white);
-    margin: 0.3rem;
+    margin: .3rem;
+}
+
+.card--featured {
+    border-left: solid .5rem var(--green-primary);
 }
 
 .logo__container {
@@ -72,7 +70,7 @@ h1 {
     background-color: var(--very-dark-grayish);
     border-radius: 3rem;
     color: var(--white);
-    padding: 0.6rem;
+    padding: .6rem;
     font-weight: 500;
     margin-left: 1rem;
     line-height: 14px;
@@ -96,25 +94,103 @@ h1 {
     font-weight: 300;
     color: var(--dark-grayish-cyan);
     font-size: 14px;
-    margin-right: 0.6rem;
+    margin-right: .6rem;
 }
 
 .labels__container {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.3rem;
+    gap: .3rem;
     justify-content: flex-start;
     align-content: space-around;
-    gap: 0.8rem;
-    margin: 0.8rem;
+    gap: .8rem;
+    margin: .8rem;
 }
 
 .label {
     border: none;
     background-color: var(--light-grayish-bg);
     color: var(--green-primary);
-    border-radius: 0.3rem;
+    border-radius: .3rem;
     font-family: "Spartan";
     font-weight: 500;
-    padding: 0.7rem;
+    padding: .7rem;
+}
+
+.attribution {
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+    font-size: 22px;
+}
+
+.attribution > p {
+    color: var(--dark-grayish-cyan);
+}
+
+.attribution > p > a {
+    color: var(--green-primary);
+}
+
+@media only screen and (min-width: 720px) {
+    .card {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .logo__container {
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        margin-bottom: 0;
+    }
+    
+    .company__logo {
+        max-width: 100%;
+        margin: 2rem;
+        object-fit: scale-down;
+        padding-left: 0;
+    }
+
+    .details__container {
+        border-bottom: none;
+        max-width: max-content;
+        padding: 1rem;
+    }
+
+    .labels__container {
+        gap: .5rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .card {
+        grid-template-columns: 1fr 2fr 3fr;
+    }
+    
+    .company__logo {
+        max-width: 100%;
+        margin: 2rem;
+        padding-left: 0; 
+        object-fit: cover;
+    }
+
+    .labels__container {
+        justify-content: flex-end;
+    }
+
+    .details__container {
+        border-bottom: none;
+        max-width: max-content;
+        padding: 1rem;
+    }
+
+    .company__name, .job__position, .post__details {
+        margin-block-start: .6rem;
+        margin-block-end: .6rem;
+    }
+    
+    .label {
+        font-size: 1rem;
+    }
 }

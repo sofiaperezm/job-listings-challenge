@@ -10,7 +10,8 @@ jobsData.forEach(element => {
 function createCard(job) {
     const cardElement = document.createElement("article");
     cardElement.classList.add("card");
-    
+    cardElement.classList.add(job.featured ? "card--featured" : "card");
+
     const companyLogoSection = createCompanyLogoSection(job.logo, job.company);
 
     const jobDetailsSection = createJobDetailsSection({ 
