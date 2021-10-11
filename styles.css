@@ -4,6 +4,7 @@
     --dark-grayish-cyan: hsl(180, 8%, 52%);
     --very-dark-grayish: hsl(180, 14%, 20%);
     --white: hsl(0, 0%, 100%);
+    --box-shadow: rgba(0, 0, 0, 0.1) 0 20px 25px -5px, rgba(0, 0, 0, 0.04) 0 10px 10px -5px;
 }
 
 * {
@@ -16,8 +17,33 @@ body {
 }
 
 h1 {
-    color: var(--very-dark-grayish);
+    color: var(--green-primary);
     margin: 2.8rem;
+}
+
+.filter__box {
+    display: none;   
+}
+
+.filter__box--visible {
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: .3rem;
+    box-shadow: var(--box-shadow);
+    background-color: var(--white);
+    margin: 3rem .75rem;
+    justify-content: space-between;
+    padding: 1.5rem;
+}
+
+.clear__button {
+    border: none;
+    background-color: transparent;
+    color: var(--green-primary);
+    cursor: pointer;
+    font-family: "Spartan";
+    font-weight: 500;
+    text-decoration: underline;
 }
 
 .container {
@@ -32,7 +58,7 @@ h1 {
     flex-direction: column;
     flex-wrap: wrap;
     border-radius: .3rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 20px 25px -5px, rgba(0, 0, 0, 0.04) 0 10px 10px -5px;
+    box-shadow: var(--box-shadow);
     background-color: var(--white);
     margin: .3rem;
 }
@@ -133,6 +159,10 @@ h1 {
 }
 
 @media only screen and (min-width: 720px) {
+    .filter__box--visible {
+        padding: 2rem;
+    }
+    
     .card {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;

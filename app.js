@@ -1,6 +1,7 @@
 import jobsData from "./data.js";
 
 const container = document.querySelector(".container")
+const filters = []
 
 jobsData.forEach(element => {
     const cardElement = createCard(element);
@@ -181,3 +182,25 @@ function createJobDetailsSection({
 
     return jobDetailsContainer;
 }
+
+function filterByLabels(filtersApplied) {
+    const filterBox = document.querySelector(".filter__box")
+    const filterLabels = document.querySelector("#filters")
+    filterLabels.innerHTML = ""
+
+    if (filtersApplied.length > 0) {
+        filterBox.classList.add("filter__box--visible")
+        filtersApplied.forEach((filter) => {
+            const filterLabel = document.createElement("span");
+            filterLabel.innerText = filter;
+            filterLabel.classList.add("filter-label")
+            filterLabels.appendChild(filterLabel);
+        })
+    } else {
+        filterBox.classList.remove("filter__box--visible")
+    }
+}
+
+filterByLabels(["holi", "hola", "oso", "pardo", "malo", "regañon"])
+setTimeout(() => filterByLabels(["holi", "hola", "oso", "pardo"]), 5000)
+setTimeout(() => filterByLabels(["holi"]), 10000)
