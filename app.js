@@ -192,11 +192,19 @@ function updateFilterBox(filtersApplied) {
     if (filtersApplied.length > 0) {
         filterBox.classList.add("filter__box--visible")
         filtersApplied.forEach((filter) => {
+            const filterContainer = document.createElement("div");
+            filterContainer.classList.add("filters__container");
+
             const filterLabel = document.createElement("span");
             filterLabel.innerText = filter;
-            filterLabel.classList.add("filter-label")
-            filterLabel.addEventListener("click", removeFilters);
-            filterLabels.appendChild(filterLabel);
+            filterLabel.classList.add("filter__label");
+
+            filterContainer.addEventListener("click", removeFilters);
+
+            filterContainer.appendChild(filterLabel);
+            filterContainer.insertAdjacentHTML("beforeend", "<i class='far fa-window-close close__icon'></i>");
+            
+            filterLabels.appendChild(filterContainer);
         })
     } else {
         filterBox.classList.remove("filter__box--visible")
@@ -204,8 +212,11 @@ function updateFilterBox(filtersApplied) {
 }
 
 function addFilters(event) {
-    const labelSelected = event.target.innerText
-    filters.push(labelSelected)
+    const labelSelected = event.target.innerText;
+
+    if (!filters.includes(labelSelected)) {
+        filters.push(labelSelected)
+    }
 
     updateFilterBox(filters)
 }
