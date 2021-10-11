@@ -93,6 +93,7 @@ function createLabel({ role, level, languages, tools }) {
         let labelElement = document.createElement("button");
         labelElement.classList.add("label");
         labelElement.innerText = label;
+        labelElement.addEventListener("click", addFilters)
         labelsContainer.appendChild(labelElement);
     }
 
@@ -183,7 +184,7 @@ function createJobDetailsSection({
     return jobDetailsContainer;
 }
 
-function filterByLabels(filtersApplied) {
+function updateFilterBox(filtersApplied) {
     const filterBox = document.querySelector(".filter__box")
     const filterLabels = document.querySelector("#filters")
     filterLabels.innerHTML = ""
@@ -194,6 +195,7 @@ function filterByLabels(filtersApplied) {
             const filterLabel = document.createElement("span");
             filterLabel.innerText = filter;
             filterLabel.classList.add("filter-label")
+            filterLabel.addEventListener("click", removeFilters);
             filterLabels.appendChild(filterLabel);
         })
     } else {
@@ -201,6 +203,19 @@ function filterByLabels(filtersApplied) {
     }
 }
 
-filterByLabels(["holi", "hola", "oso", "pardo", "malo", "regañon"])
-setTimeout(() => filterByLabels(["holi", "hola", "oso", "pardo"]), 5000)
-setTimeout(() => filterByLabels(["holi"]), 10000)
+function addFilters(event) {
+    const labelSelected = event.target.innerText
+    filters.push(labelSelected)
+
+    updateFilterBox(filters)
+}
+
+function removeFilters(event) {
+    const filterSelected = event.target.innerText
+    const indexFilterToRemove = filters.indexOf(filterSelected)
+    if (indexFilterToRemove > -1) {
+       filters.splice(indexFilterToRemove, 1);
+    }
+
+    updateFilterBox(filters)
+}
