@@ -27,13 +27,18 @@ h1 {
 
 .filter__box--visible {
     display: flex;
-    flex-wrap: nowrap;
     border-radius: .3rem;
     box-shadow: var(--box-shadow);
     background-color: var(--white);
     margin: 3rem .75rem;
     justify-content: space-between;
     padding: 1.5rem;
+}
+
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
 }
 
 .clear__button {
@@ -44,6 +49,36 @@ h1 {
     font-family: "Spartan";
     font-weight: 500;
     text-decoration: underline;
+}
+
+.filter__container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filter__label {
+    border: none;
+    background-color: var(--light-grayish-bg);
+    color: var(--green-primary);
+    border-top-left-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+    font-family: "Spartan";
+    font-weight: 500;
+    padding-right: .2rem;
+    padding: .7rem;
+}
+
+.close__icon {
+    border: none;
+    background-color: var(--light-grayish-bg);;
+    color: var(--green-primary);
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    font-family: "Spartan";
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: .7rem;
 }
 
 .container {

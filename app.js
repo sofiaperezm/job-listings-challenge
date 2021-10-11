@@ -193,7 +193,7 @@ function updateFilterBox(filtersApplied) {
         filterBox.classList.add("filter__box--visible")
         filtersApplied.forEach((filter) => {
             const filterContainer = document.createElement("div");
-            filterContainer.classList.add("filters__container");
+            filterContainer.classList.add("filter__container");
 
             const filterLabel = document.createElement("span");
             filterLabel.innerText = filter;
