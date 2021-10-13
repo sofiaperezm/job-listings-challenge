@@ -206,15 +206,18 @@ function updateFilterBox(filtersApplied) {
             filterContainer.addEventListener("click", removeFilters);
 
             filterContainer.appendChild(filterLabel);
-            filterContainer.insertAdjacentHTML("beforeend", "<i class='far fa-window-close remove__icon'></i>");
+            
+            const removeIconContainer = document.createElement("a");
+            removeIconContainer.classList.add("remove__icon");
+            filterContainer.appendChild(removeIconContainer);
+            
+            removeIconContainer.insertAdjacentHTML("beforeend", "<img src='images/icon-remove.svg'>")
             
             filterLabels.appendChild(filterContainer);
         })
     } else {
         filterBox.classList.remove("filter__box--visible")
     }
-
-    //updateCards(filters)
 }
 
 function addFilters(event) {
@@ -228,8 +231,8 @@ function addFilters(event) {
 }
 
 function removeFilters(event) {
-    const filterToRemove = event.target.innerText
-    const indexFilterToRemove = filters.indexOf(filterToRemove)
+    const filterToRemove = event.target.innerText;
+    const indexFilterToRemove = filters.indexOf(filterToRemove);
     
     if (indexFilterToRemove > -1) {
        filters.splice(indexFilterToRemove, 1);
@@ -244,10 +247,7 @@ function updateCards(filtersApplied) {
     cards.forEach((cardElement) => {
         const cardLabels = cardElement.getAttribute("data-labels");
         let isValidFilter = true;
-        console.log("card labels", cardLabels)
-        console.log("filters applied", filtersApplied)
         filtersApplied.forEach((filter) => {
-            console.log("current filter", filter)
             if (!cardLabels.includes(filter)) {
                 isValidFilter = false;
             }
