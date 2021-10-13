@@ -69,7 +69,7 @@ h1 {
     padding: .7rem;
 }
 
-.close__icon {
+.remove__icon {
     border: none;
     background-color: var(--light-grayish-bg);;
     color: var(--green-primary);
@@ -96,6 +96,10 @@ h1 {
     box-shadow: var(--box-shadow);
     background-color: var(--white);
     margin: .3rem;
+}
+
+.card--hidden {
+    display: none;
 }
 
 .card--featured {

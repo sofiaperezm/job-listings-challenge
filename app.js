@@ -2,6 +2,8 @@ import jobsData from "./data.js";
 
 const container = document.querySelector(".container")
 const filters = []
+const clearFilters = document.querySelector(".clear__button");
+clearFilters.addEventListener("click", clearFilterBox);
 
 jobsData.forEach(element => {
     const cardElement = createCard(element);
@@ -10,8 +12,10 @@ jobsData.forEach(element => {
 
 function createCard(job) {
     const cardElement = document.createElement("article");
-    cardElement.classList.add("card");
+    cardElement.setAttribute("id", "card")
+    cardElement.classList.add("card")
     cardElement.classList.add(job.featured ? "card--featured" : "card");
+    cardElement.setAttribute("data-labels", [job.role, job.level, ...job.languages, ...job.tools]);
 
     const companyLogoSection = createCompanyLogoSection(job.logo, job.company);
 
@@ -93,7 +97,7 @@ function createLabel({ role, level, languages, tools }) {
         let labelElement = document.createElement("button");
         labelElement.classList.add("label");
         labelElement.innerText = label;
-        labelElement.addEventListener("click", addFilters)
+        labelElement.addEventListener("click", addFilters);
         labelsContainer.appendChild(labelElement);
     }
 
@@ -202,13 +206,15 @@ function updateFilterBox(filtersApplied) {
             filterContainer.addEventListener("click", removeFilters);
 
             filterContainer.appendChild(filterLabel);
-            filterContainer.insertAdjacentHTML("beforeend", "<i class='far fa-window-close close__icon'></i>");
+            filterContainer.insertAdjacentHTML("beforeend", "<i class='far fa-window-close remove__icon'></i>");
             
             filterLabels.appendChild(filterContainer);
         })
     } else {
         filterBox.classList.remove("filter__box--visible")
     }
+
+    //updateCards(filters)
 }
 
 function addFilters(event) {
@@ -216,17 +222,54 @@ function addFilters(event) {
 
     if (!filters.includes(labelSelected)) {
         filters.push(labelSelected)
+        updateFilterBox(filters)
+        updateCards(filters)
     }
-
-    updateFilterBox(filters)
 }
 
 function removeFilters(event) {
-    const filterSelected = event.target.innerText
-    const indexFilterToRemove = filters.indexOf(filterSelected)
+    const filterToRemove = event.target.innerText
+    const indexFilterToRemove = filters.indexOf(filterToRemove)
+    
     if (indexFilterToRemove > -1) {
        filters.splice(indexFilterToRemove, 1);
-    }
-
-    updateFilterBox(filters)
+       updateFilterBox(filters);
+       updateCards(filters);
+    }  
 }
+
+function updateCards(filtersApplied) {
+    const cards = [...document.querySelectorAll(`[data-labels]`)];
+
+    cards.forEach((cardElement) => {
+        const cardLabels = cardElement.getAttribute("data-labels");
+        let isValidFilter = true;
+        console.log("card labels", cardLabels)
+        console.log("filters applied", filtersApplied)
+        filtersApplied.forEach((filter) => {
+            console.log("current filter", filter)
+            if (!cardLabels.includes(filter)) {
+                isValidFilter = false;
+            }
+        })
+
+        if (isValidFilter) {
+            cardElement.classList.add("card")
+            cardElement.classList.remove("card--hidden")
+        } else {
+            cardElement.classList.remove("card")
+            cardElement.classList.add("card--hidden")
+        }
+    })
+}
+
+function clearFilterBox(event) {
+    const filterLabels = document.querySelector("#filters");
+
+    filterLabels.innerHTML = "";
+    filters.length = 0;
+
+    updateFilterBox(filters);
+    updateCards(filters);
+}
+
