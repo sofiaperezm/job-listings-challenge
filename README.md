@@ -28,7 +28,10 @@ Users should be able to:
 
 ### Screenshot
 
+Desktop view
 ![Desktop view](images/desktop-screenshot.png)
+
+Desktop view with filters
 ![Desktop view with filters applied](images/desktop-filters-screenshot.jpeg)
 
 ### Links
@@ -104,4 +107,4 @@ I would like to focus on understanding event listeners in depth in my next code 
 ## Author
 
 - Frontend Mentor - [@sofiaperezm](https://www.frontendmentor.io/profile/sofiaperezm)
-- Linkedin - (https://www.linkedin.com/in/sofiaperezmantilla/)
+- [Linkedin](https://www.linkedin.com/in/sofiaperezmantilla/)
