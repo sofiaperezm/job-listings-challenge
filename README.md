@@ -69,10 +69,6 @@ function createCardElement({ elementType, container, properties, attributes }) {
 cardElement.setAttribute("data-labels", [job.role, job.level, ...job.languages, ...job.tools]);
 ```
 
-- A more functional way to write JavaScript.
-
-I also practiced a lot of how to manipulate the DOM (create elements, add classes, set/get attributes, and so on). 
-
 - Working on a mobile-first approach taking the best of Flexbox and CSS Grid.
 
 
@@ -90,6 +86,10 @@ I also practiced a lot of how to manipulate the DOM (create elements, add classe
         grid-template-columns: 1fr 2fr 1fr;
     }
 ```
+
+- A more functional way to write JavaScript.
+
+- I also practiced a lot of how to manipulate the DOM (create elements, add classes, set/get attributes, and so on). 
 
 ### Continued development
 
