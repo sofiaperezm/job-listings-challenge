@@ -12,7 +12,6 @@ jobsData.forEach(element => {
 
 function createCard(job) {
     const cardElement = document.createElement("article");
-    cardElement.setAttribute("id", "card")
     cardElement.classList.add("card")
     cardElement.classList.add(job.featured ? "card--featured" : "card");
     cardElement.setAttribute("data-labels", [job.role, job.level, ...job.languages, ...job.tools]);
@@ -144,7 +143,7 @@ function createJobDetailsSection({
     });
 
     createCardElement({
-        elementType: "p",
+        elementType: "h3",
         container: jobDetailsContainer,
         attributes: { class: "job__position"},
         properties: { innerText: position }
