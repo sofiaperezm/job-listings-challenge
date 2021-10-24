@@ -82,9 +82,9 @@ cardElement.setAttribute("data-labels", [job.role, job.level, ...job.languages, 
 
 /* card element in medium viewports*/
 .card {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-    }
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
 ```
 
 - A more functional way to write JavaScript.
